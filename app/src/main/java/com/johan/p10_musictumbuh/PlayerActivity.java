@@ -2,8 +2,12 @@ package com.johan.p10_musictumbuh;
 
 import static com.johan.p10_musictumbuh.HomeActivity.musicFiles;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
@@ -11,7 +15,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -20,7 +27,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class PlayerActivity extends AppCompatActivity {
+public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnCompletionListener{
     private View decorView;
     TextView song_name, artist_name, duration_played, duration_total;
     ImageView cover_art, nextBtn, prevBtn, backBtn, shuffleBtn, repeatBtn;
@@ -52,6 +59,7 @@ public class PlayerActivity extends AppCompatActivity {
         getIntentMethod();
         song_name.setText(listSongs.get(position).getTitle());
         artist_name.setText(listSongs.get(position).getArtist());
+        mediaPlayer.setOnCompletionListener(this);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -128,7 +136,8 @@ public class PlayerActivity extends AppCompatActivity {
                     handler.postDelayed(this,1000);
                 }
             });
-            playPauseBtn.setImageResource(R.drawable.pause1);
+            mediaPlayer.setOnCompletionListener(this);
+            playPauseBtn.setBackgroundResource(R.drawable.pause1);
             mediaPlayer.start();
         }else{
             mediaPlayer.stop();
@@ -150,7 +159,8 @@ public class PlayerActivity extends AppCompatActivity {
                     handler.postDelayed(this,1000);
                 }
             });
-            playPauseBtn.setImageResource(R.drawable.play1);
+            mediaPlayer.setOnCompletionListener(this);
+            playPauseBtn.setBackgroundResource(R.drawable.play1);
         }
     }
 
@@ -191,7 +201,8 @@ public class PlayerActivity extends AppCompatActivity {
                     handler.postDelayed(this,1000);
                 }
             });
-            playPauseBtn.setImageResource(R.drawable.pause1);
+            mediaPlayer.setOnCompletionListener(this);
+            playPauseBtn.setBackgroundResource(R.drawable.pause1);
             mediaPlayer.start();
         }else{
             mediaPlayer.stop();
@@ -213,7 +224,8 @@ public class PlayerActivity extends AppCompatActivity {
                     handler.postDelayed(this,1000);
                 }
             });
-            playPauseBtn.setImageResource(R.drawable.play1);
+            mediaPlayer.setOnCompletionListener(this);
+            playPauseBtn.setBackgroundResource(R.drawable.play1);
         }
     }
 
@@ -320,17 +332,59 @@ public class PlayerActivity extends AppCompatActivity {
         int durationTotal = Integer.parseInt(listSongs.get(position).getDuration())/1000;
         duration_total.setText(formattedTime(durationTotal));
         byte[] art = retriever.getEmbeddedPicture();
+        Bitmap bitmap;
         if(art!=null){
-            Glide.with(this)
-                    .asBitmap()
-                    .load(art)
-                    .into(cover_art);
+            bitmap = BitmapFactory.decodeByteArray(art,0,art.length);
+            ImageAnimation(this,cover_art,bitmap);
+//            Glide.with(this)
+//                    .asBitmap()
+//                    .load(art)
+//                    .into(cover_art);
         }else{
             Glide.with(this)
                     .asBitmap()
                     .load(R.drawable.app_logo)
                     .into(cover_art);
         }
+    }
+
+    public void ImageAnimation(final Context context,final ImageView imageView,final Bitmap bitmap){
+        Animation animOut = AnimationUtils.loadAnimation(context, android.R.anim.fade_out);
+        Animation animIn = AnimationUtils.loadAnimation(context, android.R.anim.fade_in);
+        animOut.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                Glide.with(context).load(bitmap).into(imageView);
+                animIn.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+                imageView.startAnimation(animIn);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+        imageView.startAnimation(animOut);
     }
 
     @Override
@@ -348,5 +402,15 @@ public class PlayerActivity extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+    }
+
+    @Override
+    public void onCompletion(MediaPlayer mp) {
+        nextBtnClicked();
+        if(mediaPlayer!=null){
+            mediaPlayer = MediaPlayer.create(getApplicationContext(),uri);
+            mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(this);
+        }
     }
 }
