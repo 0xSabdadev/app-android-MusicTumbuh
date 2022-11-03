@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MusicTumbuh</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_nav">MusicTumbuh</string>
+    <string name="desc_logo">logo_title</string>
+    <string name="tittle_icon_share">Share</string>
+    <string name="tittle_icon_about">About</string>
+    <string name="tittle_icon_exit">Exit</string>
+    <string name="tittle_icon_search">Search</string>
+    <string name="tittle_icon_setting">Setting</string>
+</resources>

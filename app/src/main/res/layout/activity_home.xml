@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bege"
+    tools:context=".MainActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:titleTextColor="@color/main_text2"
+        app:title="MusicTumbuh"
+        app:titleMarginStart="40dp"
+        app:logo="@drawable/music3"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Discover"
+        android:fontFamily="@font/poppinsbold"
+        android:paddingTop="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="0dp"
+        android:textColor="@color/main_text2"
+        android:textSize="30sp"/>
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:tabIndicatorFullWidth="true"
+        app:tabSelectedTextColor="@color/sec_col"
+        app:tabTextColor="@color/text_noselect"
+        app:tabIndicatorColor="@color/sec_col"
+        android:padding="6dp"
+        app:tabIndicatorHeight="3dp"
+        app:tabMaxWidth="0dp"
+        app:tabTextAppearance="@style/tab_text"
+        />
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+</LinearLayout>
