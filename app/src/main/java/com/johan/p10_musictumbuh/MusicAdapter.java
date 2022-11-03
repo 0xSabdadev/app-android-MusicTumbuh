@@ -1,6 +1,7 @@
 package com.johan.p10_musictumbuh;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -46,6 +47,13 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MyVieHolder>
                     .load(R.drawable.app_logo)
                     .into(holder.album_art);
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext,PlayerActivity.class);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override

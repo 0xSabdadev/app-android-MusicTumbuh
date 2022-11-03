@@ -9,4 +9,5 @@
     <string name="tittle_icon_exit">Exit</string>
     <string name="tittle_icon_search">Search</string>
     <string name="tittle_icon_setting">Setting</string>
+    <string name="floatBtnTitle">Play Button</string>
 </resources>
