@@ -14,8 +14,8 @@
         android:layout_height="50dp"
         android:id="@+id/layot_top_btn"
         android:background="@drawable/gredient_bg"
-        android:paddingLeft="10dp"
-        android:paddingRight="15dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="15dp"
         android:layout_marginTop="15dp"
         android:layout_alignParentTop="true">
         
@@ -25,13 +25,14 @@
             android:id="@+id/back_btn"
             android:src="@drawable/left"
             android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/contentDescBtnPlayer" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="Now Playing"
+            android:text="@string/nowplaying"
             android:textColor="@color/white"
             android:layout_toStartOf="@id/menu_btn"
             android:layout_toEndOf="@id/back_btn"
@@ -47,7 +48,8 @@
             android:id="@+id/menu_btn"
             android:src="@drawable/menu"
             android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/contentDescDetailBtn" />
         
     </RelativeLayout>
 
@@ -62,19 +64,21 @@
             android:layout_height="match_parent"
             android:src="@drawable/song_cover"
             android:scaleType="centerCrop"
-            android:id="@+id/cover_art"/>
+            android:id="@+id/cover_art"
+            android:contentDescription="@string/photosong" />
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="320dp"
             android:id="@+id/imageViewGradient"
             android:src="@drawable/gredient_bg"
-            android:layout_alignParentBottom="true"/>
+            android:layout_alignParentBottom="true"
+            android:contentDescription="@string/blurredphotosong" />
     </RelativeLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="This is song Name"
+        android:text="@string/song_tittle"
         android:id="@+id/song_name"
         android:layout_below="@+id/card"
         android:textColor="@color/white"
@@ -89,7 +93,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="This is song Artist"
+        android:text="@string/song_rtist"
         android:id="@+id/song_artist"
         android:layout_below="@+id/song_name"
         android:textColor="@color/white"
@@ -118,7 +122,8 @@
             android:src="@drawable/shuffle_off"
             android:layout_centerVertical="true"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="32dp"/>
+            android:layout_marginStart="32dp"
+            android:contentDescription="@string/btnshuffle" />
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
@@ -126,7 +131,8 @@
             android:src="@drawable/skip_previous"
             android:layout_centerVertical="true"
             android:layout_toStartOf="@id/play_pause"
-            android:layout_marginEnd="16dp"/>
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/btnprevios" />
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -145,7 +151,8 @@
             android:src="@drawable/skip_next"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@id/play_pause"
-            android:layout_marginStart="16dp"/>
+            android:layout_marginStart="16dp"
+            android:contentDescription="@string/btnnexvious" />
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
@@ -153,7 +160,8 @@
             android:src="@drawable/repeat"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="32dp"/>
+            android:layout_marginEnd="32dp"
+            android:contentDescription="@string/btnrepeate" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -165,7 +173,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1:28"
+            android:text="@string/timeFirst"
             android:id="@+id/durationPlayed"
             android:textColor="@color/white"
             android:layout_marginStart="10dp"
@@ -173,11 +181,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="4:28"
+            android:text="@string/timeLasr"
             android:id="@+id/durationTotal"
             android:textColor="@color/white"
             android:layout_marginEnd="10dp"
-            android:layout_alignParentEnd="true"/>
+            android:layout_alignParentEnd="true"
+            tools:ignore="RelativeOverlap"/>
         <SeekBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

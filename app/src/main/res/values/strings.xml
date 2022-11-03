@@ -10,4 +10,20 @@
     <string name="tittle_icon_search">Search</string>
     <string name="tittle_icon_setting">Setting</string>
     <string name="floatBtnTitle">Play Button</string>
+    <string name="tittle_btn_nav_home">Home</string>
+    <string name="tittle_btn_nav_person">Person</string>
+    <string name="titles_upper">Discover</string>
+    <string name="contentDescBtnPlayer">btnLeftPlayer</string>
+    <string name="nowplaying">Now Playing</string>
+    <string name="contentDescDetailBtn">DetailsBtn</string>
+    <string name="photosong">PhotoSong</string>
+    <string name="blurredphotosong">blurredPhotoSong</string>
+    <string name="song_tittle">This is song Name</string>
+    <string name="song_rtist">This is song Artist</string>
+    <string name="timeFirst">1:28</string>
+    <string name="timeLasr">4:28</string>
+    <string name="btnshuffle">btnShuffle</string>
+    <string name="btnprevios">btnPrevios</string>
+    <string name="btnnexvious">btnNexvious</string>
+    <string name="btnrepeate">btnRepeate</string>
 </resources>
