@@ -26,4 +26,5 @@
     <string name="btnprevios">btnPrevios</string>
     <string name="btnnexvious">btnNexvious</string>
     <string name="btnrepeate">btnRepeate</string>
+    <string name="empty">{Empty}</string>
 </resources>

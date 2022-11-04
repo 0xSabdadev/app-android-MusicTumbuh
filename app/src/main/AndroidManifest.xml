@@ -13,6 +13,7 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/app_logo"
         android:label="@string/app_name"
+        android:name=".ApplicationClass"
         android:roundIcon="@drawable/app_logo_rounded"
         android:supportsRtl="true"
         android:theme="@style/Theme.P10_MusicTumbuh"
@@ -45,6 +46,8 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <service android:name="com.johan.p10_musictumbuh.MusicService" android:enabled="true"/>
     </application>
 
 </manifest>
